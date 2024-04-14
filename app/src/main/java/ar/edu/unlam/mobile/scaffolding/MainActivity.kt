@@ -4,14 +4,25 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import ar.edu.unlam.mobile.scaffolding.ui.components.BottomBar
+import ar.edu.unlam.mobile.scaffolding.ui.screens.HomeScreen
 import ar.edu.unlam.mobile.scaffolding.ui.theme.ScaffoldingV2Theme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +33,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    MainScreen()
                 }
             }
         }
@@ -30,17 +41,28 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ScaffoldingV2Theme {
-        Greeting("Android")
+fun MainScreen() {
+    // Controller es el elemento que nos permite navegar entre pantallas. Tiene las acciones
+    // para navegar como naviegate y también la información de en dónde se "encuentra" el usuario
+    // a través del back stack
+    val controller = rememberNavController()
+    Scaffold(
+        bottomBar = { BottomBar(controller = controller) },
+        floatingActionButton = {
+            IconButton(onClick = { controller.navigate("home") }) {
+                Icon(Icons.Filled.Home, contentDescription = "Home")
+            }
+        },
+    ) { paddingValue ->
+        // NavHost es el componente que funciona como contenedor de los otros componentes que
+        // podrán ser destinos de navegación.
+        NavHost(navController = controller, startDestination = "home") {
+            // composable es el componente que se usa para definir un destino de navegación.
+            // Por parámetro recibe la ruta que se utilizará para navegar a dicho destino.
+            composable("home") {
+                // Home es el componente en sí que es el destino de navegación.
+                HomeScreen(modifier = Modifier.padding(paddingValue))
+            }
+        }
     }
 }

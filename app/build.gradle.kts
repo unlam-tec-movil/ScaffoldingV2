@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.daggerHiltAndroid)
 }
 
 android {
@@ -30,17 +32,17 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.11"
     }
     packaging {
         resources {
@@ -68,8 +70,12 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    // Dagger
-    implementation(libs.google.dagger)
-    annotationProcessor(libs.google.dagger.compiler)
+    // Dagger + Hilt
+    implementation(libs.google.dagger.hilt.android)
+    ksp(libs.google.dagger.hilt.android.compiler)
+    implementation(libs.google.dagger.hilt.android.testing)
+    implementation(libs.androidx.hilt.navigation.compose)
 
+    androidTestImplementation(libs.google.dagger.hilt.android.testing)
+    testImplementation(libs.google.dagger.hilt.android.testing)
 }
