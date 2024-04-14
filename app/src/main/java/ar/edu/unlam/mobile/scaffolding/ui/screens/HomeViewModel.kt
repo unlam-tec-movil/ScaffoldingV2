@@ -28,12 +28,12 @@ class HomeViewModel
         // actualización de información y de manejo de estados de una aplicación: Cargando, Error, Éxito
         // (https://developer.android.com/kotlin/flow/stateflow-and-sharedflow)
         // _helloMessage State es el estado del componente "HelloMessage" inicializado como "Cargando"
-        private val _helloMessage = MutableStateFlow(HelloMessageUIState.Loading)
+        private val helloMessage = MutableStateFlow(HelloMessageUIState.Loading)
 
         // _Ui State es el estado general del view model.
         private val _uiState =
             MutableStateFlow(
-                HomeUIState(_helloMessage.value),
+                HomeUIState(helloMessage.value),
             )
 
         // UIState expone el estado anterior como un Flujo de Estado de solo lectura.

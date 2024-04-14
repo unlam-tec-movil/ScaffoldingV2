@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.daggerHiltAndroid)
     alias(libs.plugins.kover)
+    alias(libs.plugins.ktlint)
 }
 
 android {
