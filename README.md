@@ -27,6 +27,13 @@ de packages está basada en las recomendaciones de android [1] y en la arquitect
 Propone independizar la lógica de negocio del context o de detalles de implementación.
 Las Comunicaciones de entrada y salida dependen de la lógica de negocio y no al revés.
 
+Esta arquitectura clasifica a los tipos de entrada y salida en 4:
+
+* Eventos de negocio: (Interfaz de usuario)
+* Administración: (Logging, CLI de Administración)
+* Notificación: (SMS, Emails, etc)
+* Peristencia: (Base de datos, Archivos)
+
 ## Componentes
 
 ### Puertos
@@ -42,7 +49,7 @@ En nuestro cursada veremos que dichos adapters son los accesos a la base de dato
 
 ### Esquema General
 
-![image](https://github.com/unlam-tec-movil/ScaffoldingV2/assets/5816687/a3f165ea-f32c-4409-a7a1-35c8f60853c1)
+![image](https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Hexagonal_Architecture.svg/500px-Hexagonal_Architecture.svg.png)
 
 ### Interacción Puertos y Adapters
 
