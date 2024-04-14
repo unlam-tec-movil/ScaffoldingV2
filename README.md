@@ -2,6 +2,7 @@
 
 ## Index
 
+- [Arquitectura Hexagonal](#arquitectura-hexagonal)
 - [Domain](#domain)
     - [Modelos](#modelos)
     - [Use Cases](#use-cases--services)
@@ -16,12 +17,41 @@
 - [Data](#data)
 
 Este repositorio se presenta como una referencia para organizar un proyecto de Android. La elección
-de packages está
-basada en las recomendaciones de android [1].
+de packages está basada en las recomendaciones de android [1] y en la arquitectura hexagonal.
 
-Existen packages principales que respetan esa arquitectura: Data, Domain y UI. Dentro de cada
-package encontrarás un
-readme.md que explica un poco el rol de cada uno.
+![image](https://github.com/unlam-tec-movil/ScaffoldingV2/assets/5816687/b8a3641e-8c5f-48e0-a995-7a7b9594dae3)
+
+
+# Arquitectura Hexagonal
+
+Propone independizar la lógica de negocio del context o de detalles de implementación.
+Las Comunicaciones de entrada y salida dependen de la lógica de negocio y no al revés.
+
+## Componentes
+
+### Puertos
+Los accesos hacia la aplicación (en nuestro caso, la interacción del usuario), y los accesos desde la aplicación hacia el exterior se realizan mediante Puertos de Entrada y Salida. 
+Dichos puertos definen interfaces de negocio. Es decir, reciben y devuelven modelos puros de negocio.
+
+### Adapters
+
+La implementación de la comunicación de la aplicación con recursos externos se realiza mediante adapters.
+En nuestro cursada veremos que dichos adapters son los accesos a la base de datos y hacia los servicios externos (implementaciones de Room y Retrofit)
+
+## Diseño
+
+### Esquema General
+
+![image](https://github.com/unlam-tec-movil/ScaffoldingV2/assets/5816687/a3f165ea-f32c-4409-a7a1-35c8f60853c1)
+
+### Interacción Puertos y Adapters
+
+![image](https://github.com/unlam-tec-movil/ScaffoldingV2/assets/5816687/fe9fee93-f0f7-4e07-9463-38428e3e4d00)
+
+### Arquitectura Android y Hexa
+
+![image](https://github.com/unlam-tec-movil/ScaffoldingV2/assets/5816687/8dca1cfb-5bf5-4a1e-8061-758e3b897ee2)
+
 
 # Domain
 
@@ -303,6 +333,7 @@ Aquí estará la implementación del consumo de apis externas.
 
 Aquí estará la implementación del consumo de bases de datos locales.
 
+![Power](https://github.com/unlam-tec-movil/ScaffoldingV2/assets/5816687/200d9f10-2a71-409a-90ba-103ddffa9758)
 
 [1]: https://martinfowler.com/bliki/DomainDrivenDesign.html
 
