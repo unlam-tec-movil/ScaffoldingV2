@@ -2,6 +2,7 @@
 
 ## Index
 
+- [Configuración](#configuration)
 - [Arquitectura Hexagonal](#arquitectura-hexagonal)
 - [Domain](#domain)
     - [Modelos](#modelos)
@@ -21,6 +22,13 @@ de packages está basada en las recomendaciones de android [1] y en la arquitect
 
 ![image](https://github.com/unlam-tec-movil/ScaffoldingV2/assets/5816687/b8a3641e-8c5f-48e0-a995-7a7b9594dae3)
 
+# Configuration
+
+El proyecto ejecuta dos workflows de github en cada PR. El primero realiza análisis estático de
+código usando ktlint y gradle. El segundo ejecuta los tests de la aplicación.
+
+Para configurar el proyecto en Android Studio, se debe de tener instalado el plugin
+de [ktlint](https://plugins.jetbrains.com/plugin/15057-ktlint)
 
 # Arquitectura Hexagonal
 
@@ -37,13 +45,18 @@ Esta arquitectura clasifica a los tipos de entrada y salida en 4:
 ## Componentes
 
 ### Puertos
-Los accesos hacia la aplicación (en nuestro caso, la interacción del usuario), y los accesos desde la aplicación hacia el exterior se realizan mediante Puertos de Entrada y Salida. 
-Dichos puertos definen interfaces de negocio. Es decir, reciben y devuelven modelos puros de negocio.
+
+Los accesos hacia la aplicación (en nuestro caso, la interacción del usuario), y los accesos desde
+la aplicación hacia el exterior se realizan mediante Puertos de Entrada y Salida.
+Dichos puertos definen interfaces de negocio. Es decir, reciben y devuelven modelos puros de
+negocio.
 
 ### Adapters
 
-La implementación de la comunicación de la aplicación con recursos externos se realiza mediante adapters.
-En nuestro cursada veremos que dichos adapters son los accesos a la base de datos y hacia los servicios externos (implementaciones de Room y Retrofit)
+La implementación de la comunicación de la aplicación con recursos externos se realiza mediante
+adapters.
+En nuestro cursada veremos que dichos adapters son los accesos a la base de datos y hacia los
+servicios externos (implementaciones de Room y Retrofit)
 
 ## Diseño
 
@@ -54,7 +67,6 @@ En nuestro cursada veremos que dichos adapters son los accesos a la base de dato
 ### Interacción Puertos y Adapters
 
 ![AdaptersAndPorts](https://github.com/unlam-tec-movil/ScaffoldingV2/assets/5816687/32d0adfc-c6e6-4402-b1c7-9d69cf6a0d1a)
-
 
 ### Arquitectura Android y Hexa
 

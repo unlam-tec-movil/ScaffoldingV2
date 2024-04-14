@@ -21,4 +21,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "ScaffoldingV2"
 include(":app")
- 
