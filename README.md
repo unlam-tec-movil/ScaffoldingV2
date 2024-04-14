@@ -46,12 +46,12 @@ En nuestro cursada veremos que dichos adapters son los accesos a la base de dato
 
 ### Interacción Puertos y Adapters
 
-![image](https://github.com/unlam-tec-movil/ScaffoldingV2/assets/5816687/fe9fee93-f0f7-4e07-9463-38428e3e4d00)
+![AdaptersAndPorts](https://github.com/unlam-tec-movil/ScaffoldingV2/assets/5816687/32d0adfc-c6e6-4402-b1c7-9d69cf6a0d1a)
+
 
 ### Arquitectura Android y Hexa
 
-![image](https://github.com/unlam-tec-movil/ScaffoldingV2/assets/5816687/8dca1cfb-5bf5-4a1e-8061-758e3b897ee2)
-
+![AndroidXHexa](https://github.com/unlam-tec-movil/ScaffoldingV2/assets/5816687/b8cecf19-6a73-466c-885a-294a7fe8b972)
 
 # Domain
 
